@@ -1,0 +1,61 @@
+//- index page
+if is_home()
+  h4.page-title Недавние публикации
+  each post in site.posts.sort('date', 'desc').toArray()
+    - var reading_length = Math.ceil(post.content.replace(/[^a-zA-Z\s]/g, '').split(/[\s]+/).length / 250)
+    a.article(href= config.root + post.path)
+      article.item(itemscope, itemprop='blogPost', itemtype='https://schema.org/BlogPosting')
+        h2(itemprop='headline')= post.title
+        span.post-meta
+          | Время публикации 
+          time(itemprop='datePublished', datetime= post.date.toISOString())= full_date(new Date(post.date), config.date_format) + ' ' + full_date(new Date(post.date), config.time_format)
+          | , #{reading_length} мин. на прочтение
+        p(itemprop='text').post-excerpt= post.intro ? post.intro : post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220)
+  footer(itemscope, itemtype='https://schema.org/WPFooter')
+    include _footer
+//- articles page
+if is_page() && page.title.toLowerCase() == 'публикации'
+  article.full
+    h1(itemprop='headline')= page.title
+    != page.content
+    - var lastyear = 0
+    for post, index in site.posts.sort('date', 'desc').toArray()
+      if lastyear != post.date.format('YYYY')
+        if index != 0
+          | </ul>
+        - lastyear = post.date.format('YYYY')
+        h4= lastyear
+        | <ul>
+        li(itemprop='name')
+          a(href= config.root + post.path, itemprop='url') #{post.title}
+          |  &mdash; 
+          time(itemprop='datePublished', datetime= post.date.toISOString())= full_date(new Date(post.date), config.date_format)
+      else
+        li
+          a(href= config.root + post.path) #{post.title}
+          |  &mdash; 
+          time(itemprop='datePublished', datetime= post.date.toISOString())= full_date(new Date(post.date), config.date_format)
+    if site.posts.toArray().length != 0
+      | </ul>
+  include _comments
+else if is_page()
+  article.full
+    h1(itemprop='headline')= page.title
+    if page.updated
+      span.post-meta
+        | Последнее обновление в 
+        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), config.date_format) + ' ' + full_date(new Date(page.updated), config.time_format)
+    != page.content
+  include _comments
+else if is_post()
+  article.full
+    h1(itemprop='headline')= page.title
+    span.post-meta
+      | Добавлено в 
+      time(itemprop='datePublished', datetime= page.date.toISOString())= full_date(new Date(page.date), config.date_format) + ' ' + full_date(new Date(page.date), config.time_format)
+      if page.updated
+        br
+        | Последнее обновление в 
+        time(itemprop='dateModified', datetime= page.date.toISOString())= full_date(new Date(page.updated), config.date_format) + ' ' + full_date(new Date(page.updated), config.time_format)
+    != page.content
+  include _comments

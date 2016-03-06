@@ -1,0 +1,15 @@
+# config
+logo: /images/kuldikin.png
+keywords: "Александр Кулдыкин, kuldikin alexander, kuldykin, integration, front end, design, developer, java, spring"
+pubkey:
+menu:
+  Главная: '/'
+  Публикации: '/articles'
+  Об авторе: '/about'
+
+# Content
+excerpt_link: Read more
+
+# Miscellaneous
+rss: /atom.xml
+google_analytics: UA-54989680-1
