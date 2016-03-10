@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="http://kuldikin.com/"/>
-  <updated>2016-03-10T21:05:34.000Z</updated>
+  <updated>2016-03-10T21:12:38.000Z</updated>
   <id>http://kuldikin.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://kuldikin.com/2016/03/11/shelve-strip-backout-graft/"/>
     <id>http://kuldikin.com/2016/03/11/shelve-strip-backout-graft/</id>
     <published>2016-03-10T21:05:34.000Z</published>
-    <updated>2016-03-10T21:05:34.000Z</updated>
+    <updated>2016-03-10T21:12:38.000Z</updated>
     
-    <content type="html">&lt;p&gt;Представим что изменения попали в не ту ветку которую мы хотели.
+    <content type="html">&lt;p&gt;Представим, что изменения попали в не ту ветку которую мы хотели.
 Что делать? Всё зависит от того, как много мы успели сделать.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Если только начали делать правки, но ещё не комитили&lt;/strong&gt; можно выбросить
 все изменения командой &lt;code&gt;revert --all&lt;/code&gt; и заново написать в правильной ветке
@@ -91,9 +91,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;Представим что изменения попали в не ту ветку которую мы хотели.
+      &lt;p&gt;Представим, что изменения попали в не ту ветку которую мы хотели.
 Что делать? Всё зависит от того, как много мы успели сделать.&lt;/p&gt;
-&lt;p&gt;&lt;st
+&lt;p&gt;&lt;s
     
     </summary>
     
